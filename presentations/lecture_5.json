@@ -1,0 +1,244 @@
+{
+  "slides": [
+    {
+      "title": "Все о переменных в JavaScript",
+      "sub_title": "Лекция №5",
+      "content": [
+        {
+          "type": "text",
+          "content": "Фундаментальная тема - объявление переменных. Понимание различий между способами объявления критически важно для написания чистого и предсказуемого кода."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Объявления переменных: var, let, const",
+            "Правила именования переменных",
+            "Области видимости и замыкания",
+            "Практические рекомендации"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Объявление переменных: var",
+      "sub_title": "Устаревший, но важный для понимания",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Исторически единственный способ объявления до ES5. Синтаксис: var variableName;"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Поднятие (Hoisting) - объявления поднимаются вверх",
+            "Отсутствие блочной области видимости",
+            "Function scope или Global scope"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Поднятие (Hoisting)\nconsole.log(myVar); // undefined\nvar myVar = 10;\nconsole.log(myVar); // 10\n\n// Отсутствие блочной области видимости\nif (true) {\n    var x = 10;\n}\nconsole.log(x); // 10 - доступна вне блока!"
+        }
+      ]
+    },
+    {
+      "title": "Современные объявления: let и const",
+      "sub_title": "ES6 (ES2015)",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "let - для изменяемых значений\nconst - для констант"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Блочная область видимости (Block Scope)",
+            "Временная мертвая зона (TDZ)",
+            "const требует инициализации при объявлении"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Блочная область видимости\nif (true) {\n    let y = 20;\n}\nconsole.log(y); // Ошибка!\n\n// Временная мертвая зона\nconsole.log(myLet); // Ошибка!\nlet myLet = 15;\n\n// const с объектами\nconst person = { name: \"John\" };\nperson.name = \"Alice\"; // Можно!\nperson = { name: \"Bob\" }; // Ошибка!"
+        }
+      ]
+    },
+    {
+      "title": "Сравнительная таблица",
+      "sub_title": "var vs let vs const",
+      "content": [
+        {
+          "type": "text",
+          "content": "Ключевые различия между способами объявления переменных:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Область видимости: Function/Global vs Block vs Block",
+            "Поднятие: Да (с undefined) vs Да (TDZ) vs Да (TDZ)",
+            "Переопределение: Можно vs Можно vs Нельзя",
+            "Повторное объявление: Можно vs Нельзя vs Нельзя",
+            "Инициализация: Не обязательна vs Не обязательна vs Обязательна"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Практические рекомендации",
+      "content": [
+        {
+          "type": "list",
+          "items": [
+            "Всегда используйте const по умолчанию",
+            "Используйте let только если переменная будет перезаписываться",
+            "Избегайте использования var в новом коде",
+            "Всегда объявляйте переменные",
+            "Всегда используйте строгий режим (\"use strict\")"
+          ]
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "\"use strict\";\n\n// Хорошая практика\nconst API_URL = \"https://api.example.com\";\nlet isLoading = false;\n\nfunction fetchData() {\n    isLoading = true;\n    // логика загрузки\n    isLoading = false;\n}"
+        }
+      ]
+    },
+    {
+      "title": "Правила именования переменных",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Синтаксические правила (обязательные):"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Разрешенные символы: буквы, цифры, $, _",
+            "Первый символ: не может быть цифрой",
+            "Регистрозависимость: apple ≠ Apple ≠ APPLE",
+            "Запрещенные слова: ключевые слова языка"
+          ]
+        },
+        {
+          "type": "text",
+          "content": "Стилистические правила (соглашения):"
+        },
+        {
+          "type": "list",
+          "items": [
+            "camelCase: для переменных и функций",
+            "UPPER_CASE: для констант",
+            "PascalCase: для классов",
+            "Избегайте транслита и общих имен"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// camelCase для переменных и функций\nconst userName = \"Анна\";\nconst userAge = 25;\nconst isActive = true;\nconst hasValidSubscription = false;\n\nfunction getUserData() {\n  return { name: userName, age: userAge };\n}\n\nfunction calculateTotalPrice(products) {\n  return products.reduce((sum, product) => sum + product.price, 0);\n}\n\n// UPPER_CASE для констант\nconst API_KEY = \"abc123def456\";\nconst MAX_USERS = 1000;\nconst DEFAULT_TIMEOUT = 5000;\nconst COLOR_RED = \"#FF0000\";\nconst PI = 3.14159;\n\n// PascalCase для классов\nclass UserProfile {\n  constructor(name, email) {\n    this.name = name;\n    this.email = email;\n  }\n  \n  displayInfo() {\n    return `Пользователь: ${this.name}`;\n  }\n}\n\nclass ShoppingCart {\n  constructor() {\n    this.items = [];\n  }\n  \n  addItem(product) {\n    this.items.push(product);\n  }\n}\n\n// Плохие примеры (антипаттерны)\nconst imyapolzovatelya = \"Анна\"; // транслит\nconst usr_nm = \"Анна\";           // непонятные сокращения\nconst temp = \"временное\";         // слишком общее имя\nconst data = {};                  // слишком общее имя\nconst fn = function() {};         // непонятное сокращение"
+        }
+      ]
+    },
+    {
+      "title": "Пример рефакторинга имен",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Было (как НЕ надо делать):"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "let d = 10;\nlet s = 1000;\nlet r = 0.1;\n\nfunction calc(p, q, r) {\n  let res = q;\n  for (let i = 0; i < p; i++) {\n    res += res * r;\n  }\n  return res;\n}"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "text",
+          "content": "Стало (как НАДО делать):"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "const daysOverdue = 10;\nconst debtAmount = 1000;\nconst penaltyRatePerDay = 0.1;\n\nfunction calculateDebtWithPenalties(days, initialAmount, rate) {\n  let currentAmount = initialAmount;\n  for (let day = 0; day < days; day++) {\n    currentAmount += currentAmount * rate;\n  }\n  return currentAmount;\n}"
+        }
+      ]
+    },
+    {
+      "title": "Области видимости",
+      "sub_title": "Global, Function и Block Scope",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Область видимости определяет доступность переменных в коде."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Глобальная область (Global Scope)",
+            "Функциональная область (Function Scope)", 
+            "Блочная область (Block Scope)",
+            "Цепочка областей видимости (Scope Chain)"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Глобальная область\nconst globalVar = 'Я глобальная!';\n\nfunction myFunction() {\n    // Функциональная область\n    const functionVar = 'Я локальная!';\n    \n    if (true) {\n        // Блочная область\n        let blockVar = 'Я в блоке!';\n        console.log(functionVar); // Доступно\n    }\n    \n    console.log(blockVar); // Ошибка!\n}"
+        }
+      ]
+    },
+    {
+      "title": "Замыкания (Closures)",
+      "sub_title": "Мощная концепция JavaScript",
+      "content": [
+        {
+          "type": "text",
+          "content": "Замыкание - функция, которая запоминает свое лексическое окружение даже после выполнения."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function createCounter() {\n  let count = 0; // \"замыкается\" внутри функции\n  \n  return function increment() {\n    count++;\n    console.log(count);\n  };\n}\n\nconst myCounter = createCounter();\nmyCounter(); // 1\nmyCounter(); // 2\nmyCounter(); // 3"
+        },
+        {
+          "type": "text",
+          "content": "Функция increment продолжает иметь доступ к переменной count даже после завершения createCounter."
+        }
+      ]
+    },
+    {
+      "title": "Модульные области и итоги",
+      "content": [
+        {
+          "type": "text",
+          "content": "ES6 Модули решают проблему глобальной области видимости:"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// module.js\nconst privateVariable = 'Приватная';\nexport const publicVariable = 'Публичная';\n\n// main.js  \nimport { publicVariable } from './module.js';\nconsole.log(publicVariable); // Доступно\nconsole.log(privateVariable); // Ошибка!"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Используйте let/const вместо var",
+            "Следуйте правилам именования",
+            "Понимайте области видимости и замыкания",
+            "Используйте модули для изоляции кода"
+          ]
+        }
+      ]
+    }
+  ]
+}

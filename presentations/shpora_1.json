@@ -1,0 +1,368 @@
+{
+  "slides": [
+    {
+      "title": "Операторы в JavaScript",
+      "sub_title": "Обзор основных типов операторов",
+      "content": [
+        {
+          "type": "text",
+          "content": "В JavaScript операторы используются для выполнения операций над значениями и переменными. Они делятся на несколько категорий по функциональности."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Арифметические операторы",
+            "Операторы присваивания",
+            "Операторы сравнения",
+            "Логические операторы",
+            "Побитовые операторы",
+            "Строковые операторы",
+            "Условный (тернарный) оператор",
+            "Операторы работы с объектами"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Арифметические операторы",
+      "sub_title": "Математические операции с числами",
+      "left_column": [
+        {
+          "type": "list",
+          "items": [
+            "+ - Сложение",
+            "- - Вычитание",
+            "* - Умножение",
+            "/ - Деление",
+            "% - Остаток от деления",
+            "** - Возведение в степень",
+            "++ - Инкремент",
+            "-- - Декремент"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "let a = 10;\nlet b = 3;\n\nconsole.log(a + b);  // 13\nconsole.log(a - b);  // 7\nconsole.log(a * b);  // 30\nconsole.log(a / b);  // 3.333\nconsole.log(a % b);  // 1\nconsole.log(a ** b); // 1000\n\nlet c = 5;\nc++; // c становится 6\nconsole.log(c); // 6"
+        }
+      ]
+    },
+    {
+      "title": "Операторы присваивания",
+      "sub_title": "Присвоение значений переменным",
+      "left_column": [
+        {
+          "type": "list",
+          "items": [
+            "= - Простое присваивание",
+            "+= - Присваивание со сложением",
+            "-= - Присваивание с вычитанием",
+            "*= - Присваивание с умножением",
+            "/= - Присваивание с делением",
+            "%= - Присваивание с остатком",
+            "**= - Присваивание со степенью"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "let x = 10;\nlet y = 5;\n\nx += y;  // x = x + y → 15\nconsole.log(x);\n\nx -= y;  // x = x - y → 10\nconsole.log(x);\n\nx *= y;  // x = x * y → 50\nconsole.log(x);\n\nx /= y;  // x = x / y → 10\nconsole.log(x);\n\nx %= 3;  // x = x % 3 → 1\nconsole.log(x);"
+        }
+      ]
+    },
+    {
+      "title": "Операторы сравнения и логические операторы",
+      "sub_title": "Сравнение значений и логические операции",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Операторы сравнения:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "== - Нестрогое равенство",
+            "=== - Строгое равенство",
+            "!= - Нестрогое неравенство",
+            "!== - Строгое неравенство",
+            "> - Больше",
+            "< - Меньше",
+            ">= - Больше или равно",
+            "<= - Меньше или равно"
+          ]
+        },
+        {
+          "type": "text",
+          "content": "Логические операторы:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "&& - Логическое И",
+            "|| - Логическое ИЛИ",
+            "! - Логическое НЕ"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Сравнение\nconsole.log(5 == '5');   // true\nconsole.log(5 === '5');  // false\nconsole.log(5 > 3);      // true\n\n// Логические операции\nlet age = 25;\nlet hasLicense = true;\n\nif (age >= 18 && hasLicense) {\n    console.log('Можно водить');\n}\n\nif (age < 18 || !hasLicense) {\n    console.log('Нельзя водить');\n}"
+        }
+      ]
+    },
+    {
+      "title": "Побитовые и строковые операторы",
+      "sub_title": "Работа с битами и строками",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Побитовые операторы:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "& - Побитовое И",
+            "| - Побитовое ИЛИ",
+            "^ - Исключающее ИЛИ",
+            "~ - Побитовое НЕ",
+            "<< - Сдвиг влево",
+            ">> - Сдвиг вправо",
+            ">>> - Беззнаковый сдвиг"
+          ]
+        },
+        {
+          "type": "text",
+          "content": "Строковые операторы:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "+ - Конкатенация строк",
+            "+= - Присваивание с конкатенацией"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Побитовые операции\nlet a = 5;  // 101 в двоичной\nlet b = 3;  // 011 в двоичной\n\nconsole.log(a & b);  // 1 (001)\nconsole.log(a | b);  // 7 (111)\nconsole.log(a ^ b);  // 6 (110)\n\n// Строковые операции\nlet firstName = 'John';\nlet lastName = 'Doe';\nlet fullName = firstName + ' ' + lastName;\nconsole.log(fullName); // 'John Doe'\n\nlet greeting = 'Hello';\ngreeting += ', World!';\nconsole.log(greeting); // 'Hello, World!'"
+        }
+      ]
+    },
+    {
+      "title": "Специальные операторы",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Операторы работы с объектами:"
+        },
+        {
+          "type": "list",
+          "items": [
+            ". - Доступ к свойству",
+            "[] - Доступ через скобки",
+            "in - Проверка свойства",
+            "instanceof - Проверка типа",
+            "new - Создание экземпляра"
+          ]
+        },
+        {
+          "type": "text",
+          "content": "Операторы расширения:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "... - Spread оператор",
+            "... - Rest оператор"
+          ]
+        },
+        {
+          "type": "text",
+          "content": "Условный (тернарный) оператор:"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "//тернарный оператор\nlet age = 20;\nlet status = age >= 18 ? 'взрослый' : 'невзрослый';\nconsole.log(status); // 'взрослый'\n// Работа с объектами\nlet person = {\n    name: 'Alice',\n    age: 25\n};\n\nconsole.log(person.name);     // 'Alice'\nconsole.log(person['age']);   // 25\nconsole.log('name' in person); // true\n\n// Spread оператор\nlet arr1 = [1, 2, 3];\nlet arr2 = [...arr1, 4, 5];\nconsole.log(arr2); // [1, 2, 3, 4, 5]"
+        }
+      ]
+    },
+    {
+      "title": "Приоритет операторов",
+      "content": [
+        {
+          "type": "text",
+          "content": "Порядок выполнения операций\nОператоры выполняются в определенном порядке приоритета. Вот основные уровни (от высшего к низшему):"
+        },
+        {
+          "type": "list",
+          "items": [
+            "() - Группировка",
+            "new - Создание объектов (с аргументами)",
+            ". [] () - Доступ к свойствам и вызов функций",
+            "! ~ + - typeof void delete - Унарные операторы",
+            "** - Возведение в степень",
+            "* / % - Умножение, деление, остаток",
+            "+ - - Сложение и вычитание",
+            "< <= > >= in instanceof - Сравнение",
+            "== != === !== - Равенство",
+            "&& - Логическое И",
+            "|| - Логическое ИЛИ",
+            "?? - Нулевое слияние",
+            "? : - Тернарный оператор",
+            "= += -= и др. - Присваивание"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ключевые слова в JavaScript - Часть 1",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Объявление переменных:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "var - Функциональная область видимости",
+            "let - Блочная область видимости",
+            "const - Константа (блочная область)"
+          ]
+        },
+        {
+          "type": "text",
+          "content": "Функции и классы:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "function - Объявление функции",
+            "return - Возврат значения",
+            "class - Определение класса",
+            "extends - Наследование классов"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "var oldVar = 1; // Устаревший способ\nlet modernVar = 2; // Современный способ\nconst PI = 3.14; // Константа\n// Разница в области видимости\nif (true) {\n    let blockScoped = 'видна только в блоке';\n    var functionScoped = 'видна везде в функции';\n}\n// Функция\nfunction greet(name) {\n    return `Hello, ${name}!`;\n}\n// Класс\nclass Animal {\n    constructor(name) {\n        this.name = name;\n    }\n}\nclass Dog extends Animal {\n    bark() {\n        return 'Woof!';\n    }\n}"
+        }
+      ]
+    },
+    {
+      "title": "Ключевые слова в JavaScript - Часть 2",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Условные операторы:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "if / else - Условное выполнение",
+            "switch / case / default - Множественный выбор",
+            "break - Прерывание выполнения",
+            "continue - Пропуск итерации"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// if/else\nlet temperature = 25;\n\nif (temperature > 30) {\n    console.log('Жарко');\n} else if (temperature > 20) {\n    console.log('Тепло');\n} else {\n    console.log('Прохладно');\n}\n\n// switch\nlet day = 1;\nswitch (day) {\n    case 0:\n        console.log('Воскресенье');\n        break;\n    case 1:\n        console.log('Понедельник');\n        break;\n    default:\n        console.log('Другой день');\n}"
+        }
+      ]
+    },
+    {
+      "title": "Ключевые слова в JavaScript - Часть 3",
+      "sub_title": "Управление потоком выполнения",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Циклы:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "for - Цикл с счетчиком",
+            "while - Цикл с условием",
+            "do while - Цикл с постусловием"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// for loop\nfor (let i = 0; i < 5; i++) {\n    console.log(i);\n}\n\n// while loop\nlet count = 0;\nwhile (count < 3) {\n    console.log(count);\n    count++;\n}\n\n// do while\nlet x = 0;\ndo {\n    console.log(x);\n    x++;\n} while (x < 3);"
+        }
+      ]
+    },
+    {
+      "title": "Ключевые слова в JavaScript - Часть 4",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Обработка ошибок:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "try / catch / finally - Блок обработки ошибок",
+            "throw - Генерация исключения"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "try {\n    let result = riskyOperation();\n    console.log(result);\n} catch (error) {\n    console.error('Произошла ошибка:', error);\n} finally {\n    console.log('Этот код выполнится всегда');\n}\n\nfunction validateAge(age) {\n    if (age < 0) {\n        throw new Error('Возраст не может быть отрицательным');\n    }\n}"
+        }
+      ]
+    },
+    {
+      "title": "Ключевые слова в JavaScript - Часть 5",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Специальные ключевые слова:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "this - Текущий контекст",
+            "super - Родительский класс",
+            "new - Создание экземпляра",
+            "typeof - Определение типа",
+            "instanceof - Проверка типа объекта",
+            "void - Выполнение без возврата",
+            "delete - Удаление свойства",
+            "in - Проверка наличия свойства"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// this и new\nfunction Person(name) {\n    this.name = name;\n}\nlet john = new Person('John');\n\n// typeof и instanceof\nconsole.log(typeof 'hello'); // 'string'\nconsole.log(john instanceof Person); // true\n\n// in и delete\nlet obj = { a: 1, b: 2 };\nconsole.log('a' in obj); // true\ndelete obj.a;\nconsole.log('a' in obj); // false"
+        }
+      ]
+    }
+  ]
+}

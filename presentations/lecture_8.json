@@ -1,0 +1,283 @@
+{
+  "slides": [
+    {
+      "title": "Лекция №8: Структурное программирование в JavaScript",
+      "sub_title": "Глава 1: Введение",
+      "content": [
+        {
+          "type": "text",
+          "content": "Добрый день! Сегодня мы поговорим о том, как писать код, который будет не только работать, но и быть понятным, легко поддерживаемым и предсказуемым."
+        },
+        {
+          "type": "text",
+          "content": "Давайте начнем с примера того, как НЕ нужно писать код - так называемого 'спагетти-кода':"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function processOrder(order) {\n    let total = 0;\n    let i = 0;\n    \n    calculate: {\n        if (i >= order.items.length) break calculate;\n        let item = order.items[i];\n        \n        if (item.quantity <= 0) {\n            i++;\n            continue calculate;\n        }\n        \n        if (item.price > 1000) {\n            total += item.price * 0.9;\n        } else {\n            total += item.price;\n        }\n        \n        i++;\n        continue calculate;\n    }\n    \n    // Еще более запутанная логика...\n    if (total > 5000) goto applyDiscount;\n    if (total > 3000) goto applySmallDiscount;\n    goto finish;\n    \n    applyDiscount: {\n        total *= 0.85;\n        goto finish;\n    }\n    \n    applySmallDiscount: {\n        total *= 0.9;\n        goto finish;\n    }\n    \n    finish: {\n        return total;\n    }\n}"
+        }
+      ]
+    },
+    {
+      "title": "Что такое структурное программирование?",
+      "sub_title": "Определение и историческая справка",
+      "content": [
+        {
+          "type": "text",
+          "content": "Структурное программирование - это парадигма, основанная на использовании трёх базовых управляющих конструкций."
+        },
+        {
+          "type": "list",
+          "items": [
+            "1966 год: Теорема Бёма-Якопини доказала, что любую программу можно написать с помощью трех структур",
+            "Работы Эдсгера Дейкстры: критика оператора goto, принципы 'правильного' программирования",
+            "Основная цель: Повышение читаемости, понятности, тестируемости и сопровождаемости кода"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Три кита структурного программирования",
+      "sub_title": "Конструкция 1: Линейная последовательность",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Суть: Инструкции выполняются одна за другой, сверху вниз."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Последовательное выполнение команд",
+            "Предсказуемый поток выполнения",
+            "Легко читать и понимать"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function calculateRectangleArea(width, height) {\n    // 1. Получаем ширину\n    let w = width;\n    \n    // 2. Получаем высоту  \n    let h = height;\n    \n    // 3. Вычисляем площадь\n    let area = w * h;\n    \n    // 4. Возвращаем результат\n    return area;\n}\n\n// Использование:\nlet area = calculateRectangleArea(10, 5);\nconsole.log(area); // 50"
+        }
+      ]
+    },
+    {
+      "title": "Конструкция 2: Ветвление",
+      "sub_title": "Выполнение разных блоков кода в зависимости от условия",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Плохой пример: вложенные if без else"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function getGrade(score) {\n    let grade;\n    if (score >= 90) grade = 'A';\n    if (score >= 80 && score < 90) grade = 'B';\n    if (score >= 70 && score < 80) grade = 'C';\n    if (score < 70) grade = 'F';\n    return grade;\n}"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "text",
+          "content": "Хороший пример: полная конструкция if-else if-else"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function getGrade(score) {\n    if (score >= 90) {\n        return 'A';\n    } else if (score >= 80) {\n        return 'B';\n    } else if (score >= 70) {\n        return 'C';\n    } else {\n        return 'F';\n    }\n}"
+        }
+      ]
+    },
+    {
+      "title": "Конструкция 3: Цикл",
+      "sub_title": "Многократное выполнение блока кода пока истинно условие",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "for - когда известно количество итераций"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function sumArray(numbers) {\n    let total = 0;\n    \n    for (let i = 0; i < numbers.length; i++) {\n        total += numbers[i];\n    }\n    \n    return total;\n}"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "text",
+          "content": "while - когда число итераций неизвестно"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function waitForConnection(maxAttempts) {\n    let attempts = 0;\n    let isConnected = false;\n    \n    while (!isConnected && attempts < maxAttempts) {\n        isConnected = checkConnection();\n        attempts++;\n        \n        if (!isConnected) {\n            wait(1000);\n        }\n    }\n    \n    return isConnected;\n}"
+        }
+      ]
+    },
+    {
+      "title": "Принцип 'Один вход — один выход'",
+      "sub_title": "Предсказуемый поток выполнения",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Плохой пример: множественные return"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function processUser(user) {\n    if (!user) return null;\n    \n    if (user.age < 18) return \"too young\";\n    \n    if (user.email) {\n        if (user.isVerified) {\n            return result;\n        } else {\n            return \"not verified\";\n        }\n    }\n    \n    return \"no email\";\n}"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "text",
+          "content": "Хороший пример: один вход, один выход"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function processUser(user) {\n    let result = \"success\";\n    \n    if (!user) {\n        result = \"no user\";\n    } else if (user.age < 18) {\n        result = \"too young\";\n    } else if (!user.email) {\n        result = \"no email\";\n    } else if (!user.isVerified) {\n        result = \"not verified\";\n    } else {\n        result = performUserProcessing(user);\n    }\n    \n    return result;\n}"
+        }
+      ]
+    },
+    {
+      "title": "Отсутствие оператора goto",
+      "sub_title": "Почему goto - это плохо",
+      "content": [
+        {
+          "type": "list",
+          "items": [
+            "Создает 'лапшу' из переходов",
+            "Сложно отлаживать",
+            "Невозможно предсказать поток выполнения"
+          ]
+        },
+        {
+          "type": "text",
+          "content": "В JavaScript есть 'духи' goto:"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// ПЛОХАЯ ПРАКТИКА: использование меток\nouterLoop: for (let i = 0; i < 5; i++) {\n    innerLoop: for (let j = 0; j < 5; j++) {\n        if (i === 2 && j === 2) {\n            break outerLoop;\n        }\n        console.log(i, j);\n    }\n}\n\n// ХОРОШАЯ АЛЬТЕРНАТИВА: использование флагов\nfunction findInMatrix(matrix, target) {\n    let found = false;\n    let result = null;\n    \n    for (let i = 0; i < matrix.length && !found; i++) {\n        for (let j = 0; j < matrix[i].length && !found; j++) {\n            if (matrix[i][j] === target) {\n                found = true;\n                result = { row: i, col: j };\n            }\n        }\n    }\n    \n    return result;\n}"
+        }
+      ]
+    },
+    {
+      "title": "Декомпозиция на подпрограммы",
+      "sub_title": "Принципы хороших функций",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Плохой пример: функция делает слишком много"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function processOrderAndSendEmail(order) {\n    // 1. Валидация заказа\n    if (!order.items || order.items.length === 0) {\n        throw new Error(\"Пустой заказ\");\n    }\n    \n    // 2. Расчет стоимости\n    let total = 0;\n    for (let item of order.items) {\n        total += item.price * item.quantity;\n    }\n    \n    // 3. Применение скидки\n    if (order.customer.isVIP) {\n        total *= 0.9;\n    }\n    \n    // 4. Отправка email\n    let emailContent = `Ваш заказ принят!`;\n    sendEmail(order.customer.email, emailContent);\n    \n    // 5. Логирование\n    console.log(`Заказ обработан: ${total}`);\n    \n    return total;\n}"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "text",
+          "content": "Хороший пример: декомпозиция на маленькие функции"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function processOrder(order) {\n    validateOrder(order);\n    let total = calculateTotal(order);\n    total = applyDiscount(total, order.customer);\n    sendConfirmationEmail(order.customer, total);\n    logOrderProcessing(order, total);\n    \n    return total;\n}\n\nfunction validateOrder(order) {\n    if (!order.items || order.items.length === 0) {\n        throw new Error(\"Пустой заказ\");\n    }\n}\n\nfunction calculateTotal(order) {\n    return order.items.reduce((sum, item) => {\n        return sum + (item.price * item.quantity);\n    }, 0);\n}"
+        }
+      ]
+    },
+    {
+      "title": "Практический пример рефакторинга",
+      "sub_title": "От монолитного кода к структурированному",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "ДО рефакторинга: монолитный код"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function handlePurchase(cart, user) {\n    let total = 0;\n    \n    // Расчет суммы\n    for (let i = 0; i < cart.length; i++) {\n        let item = cart[i];\n        if (item.quantity > 0 && item.price > 0) {\n            total += item.price * item.quantity;\n            if (item.onSale) {\n                total -= item.discount * item.quantity;\n            }\n        }\n    }\n    \n    // Применение скидки пользователя\n    if (user.isPremium) {\n        total *= 0.85;\n    } else if (user.coupon) {\n        total -= user.coupon.value;\n    }\n    \n    // Проверка наличия средств\n    if (user.balance < total) {\n        console.log(\"Недостаточно средств\");\n        return false;\n    }\n    \n    // Списание средств\n    user.balance -= total;\n    \n    // Создание чека\n    let receipt = {\n        date: new Date(),\n        items: cart,\n        total: total,\n        user: user.name\n    };\n    \n    console.log(\"Чек:\", receipt);\n    return true;\n}"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "text",
+          "content": "ПОСЛЕ рефакторинга: структурированный код"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function handlePurchase(cart, user) {\n    try {\n        let total = calculateTotalWithDiscounts(cart, user);\n        processPayment(user, total);\n        let receipt = generateReceipt(cart, total, user);\n        printReceipt(receipt);\n        \n        return true;\n    } catch (error) {\n        console.error(\"Ошибка:\", error.message);\n        return false;\n    }\n}\n\nfunction calculateTotalWithDiscounts(cart, user) {\n    let baseTotal = calculateBaseTotal(cart);\n    return applyUserDiscounts(baseTotal, user);\n}\n\nfunction calculateBaseTotal(cart) {\n    return cart.reduce((total, item) => {\n        if (isValidItem(item)) {\n            return total + calculateItemTotal(item);\n        }\n        return total;\n    }, 0);\n}"
+        }
+      ]
+    },
+    {
+      "title": "Итоги и ключевые принципы",
+      "sub_title": "Основные правила структурного программирования",
+      "content": [
+        {
+          "type": "list",
+          "items": [
+            "Используй только три базовые конструкции: Последовательность, Ветвление, Цикл",
+            "Разбивай программу на небольшие функции: Одна ответственность у каждой функции, Понятные имена, Чистые функции",
+            "Избегай goto и его аналогов: Не используй break/continue с метками, Рефактори сложную логику",
+            "Стремись к чистоте и предсказуемости: Один вход и один выход, Предсказуемый поток выполнения, Минимум побочных эффектов"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Структурное программирование сегодня",
+      "sub_title": "Связь с современными практиками",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Это не отдельная парадигма, а обязательная основа!"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "class OrderProcessor {\n    process(order) {\n        this.validateOrder(order);\n        let total = this.calculateTotal(order);\n        this.applyDiscounts(total, order.customer);\n        this.processPayment(order.customer, total);\n        \n        return this.createConfirmation(order, total);\n    }\n    \n    validateOrder(order) {\n        if (!order.items.length) {\n            throw new Error(\"Order cannot be empty\");\n        }\n    }\n    \n    calculateTotal(order) {\n        return order.items.reduce((sum, item) => \n            sum + (item.price * item.quantity), 0);\n    }\n}"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "list",
+          "items": [
+            "Clean Code: основан на принципах структурного программирования",
+            "SOLID: Single Responsibility следует из декомпозиции",
+            "Функциональное программирование: чистые функции - развитие идей структурного программирования",
+            "Современный JavaScript: классы и модули используют структурные принципы"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Заключение",
+      "sub_title": "Фундамент качественного программирования",
+      "content": [
+        {
+          "type": "text",
+          "content": "Структурное программирование - это не устаревшая концепция, а фундамент, на котором строятся все современные подходы к разработке."
+        },
+        {
+          "type": "text",
+          "content": "Освоив эти принципы, вы сможете писать код, который будет легко понимать, тестировать и поддерживать - как вам самим, так и другим разработчикам."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Повышение читаемости кода",
+            "Упрощение отладки и тестирования",
+            "Улучшение сопровождаемости",
+            "Предсказуемость поведения программы"
+          ]
+        }
+      ]
+    }
+  ]
+}

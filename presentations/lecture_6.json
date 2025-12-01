@@ -1,0 +1,503 @@
+{
+  "slides": [
+    {
+      "title": "Функции в JavaScript",
+      "sub_title": "Лекция №6 - Введение",
+      "content": [
+        {
+          "type": "text",
+          "content": "Сегодня мы начинаем изучение одной из фундаментальных и самых мощных концепций в JavaScript — функций."
+        },
+        {
+          "type": "text",
+          "content": "Функции — это независимые блоки кода, предназначенные для выполнения конкретных, логически завершенных задач."
+        }
+      ]
+    },
+    {
+      "title": "Что такое функция?",
+      "content": [
+        {
+          "type": "text",
+          "content": "Функция — это «черный ящик»: вы передаете данные, он выполняет операции и возвращает результат."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Объявляется ОДИН раз",
+            "Вызывается МНОЖЕСТВО раз",
+            "Решает конкретную задачу",
+            "Повышает переиспользование кода"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Зачем нужны функции?",
+      "sub_title": "Преимущества",
+      "left_column": [
+        {
+          "type": "list",
+          "items": [
+            "Повторное использование кода (DRY)",
+            "Структурирование кода",
+            "Изоляция логики",
+            "Избегание дублирования"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Без функции\nconsole.log('Привет, Иван!');\nconsole.log('Привет, Мария!');\nconsole.log('Привет, Петр!');\n\n// С функцией\nfunction greet(name) {\n  console.log('Привет, ' + name + '!');\n}\ngreet('Иван');\ngreet('Мария');\ngreet('Петр');"
+        }
+      ]
+    },
+    {
+      "title": "Объявление функции",
+      "sub_title": "Function Declaration",
+      "left_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function имяФункции(параметры) {\n  // Тело функции\n  // Инструкции\n}"
+        },
+        {
+          "type": "list",
+          "items": [
+            "function - ключевое слово",
+            "имяФункции - осмысленное имя",
+            "параметры - входные данные",
+            "{} - тело функции"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "text",
+          "content": "Особенность: Поднятие (Hoisting)"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Работает благодаря hoisting\nsayHello(); // \"Привет!\"\n\nfunction sayHello() {\n  console.log(\"Привет!\");\n}"
+        }
+      ]
+    },
+    {
+      "title": "Вызов функции",
+      "content": [
+        {
+          "type": "text",
+          "content": "Объявление функции не приводит к её выполнению. Для выполнения функцию нужно ВЫЗВАТЬ."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Объявление\nfunction add(a, b) {\n  return a + b;\n}\n\n// Вызов\nconst result = add(5, 3);\nconsole.log(result); // 8\n\n// Многократный вызов\nconsole.log(add(10, 15)); // 25\nconsole.log(add(-1, 7));  // 6"
+        }
+      ]
+    },
+    {
+      "title": "Простой пример",
+      "left_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function add(a, b) {\n  const result = a + b;\n  return result;\n}"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "const sum = add(5, 3);\nconsole.log(sum); // 8"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "text",
+          "content": "Ключевые моменты:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Параметры a и b - входные данные",
+            "return - возвращает результат",
+            "Без return возвращается undefined",
+            "Можно вызывать многократно"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Параметры vs Аргументы",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Параметры - переменные при объявлении"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// a и b - параметры\nfunction multiply(a, b) {\n  return a * b;\n}"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "text",
+          "content": "Аргументы - значения при вызове"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// 5 и 3 - аргументы\nconst result = multiply(5, 3);\nconsole.log(result); // 15"
+        }
+      ]
+    },
+    {
+      "title": "Ключевое слово return",
+      "left_column": [
+        {
+          "type": "list",
+          "items": [
+            "Завершает выполнение функции",
+            "Возвращает значение наружу",
+            "Код после return не выполняется"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function multiply(a, b) {\n  const result = a * b;\n  return result; // Возврат значения\n  console.log('Не выполнится');\n}\n\nconst myNumber = multiply(10, 2);\nconsole.log(myNumber); // 20"
+        }
+      ]
+    },
+    {
+      "title": "Возврат без return",
+      "sub_title": "Продолжение",
+      "content": [
+        {
+          "type": "text",
+          "content": "Если функция не имеет оператора return или return без значения, она возвращает undefined"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function doSomething(a, b) {\n  const result = a * b;\n  // Нет return\n}\n\nconst answer = doSomething(2, 3);\nconsole.log(answer); // undefined\n\nfunction returnNothing() {\n  return; // return без значения\n}\nconsole.log(returnNothing()); // undefined"
+        }
+      ]
+    },
+    {
+      "title": "Значения по умолчанию",
+      "sub_title": "Default Parameters",
+      "left_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Старый способ (до ES6)\nfunction oldGreet(name) {\n  name = name || 'Гость';\n  console.log('Привет, ' + name);\n}"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Современный способ (ES6)\nfunction greet(name = 'Гость') {\n  console.log(`Привет, ${name}`);\n}"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Примеры вызова\ngreet('Анна'); // Привет, Анна\ngreet();       // Привет, Гость\n\n// С несколькими параметрами\nfunction createUser(name, age = 18, role = 'user') {\n  return { name, age, role };\n}\n\nconsole.log(createUser('Иван'));\n// { name: 'Иван', age: 18, role: 'user' }"
+        }
+      ]
+    },
+    {
+      "title": "Функциональное выражение",
+      "sub_title": "Function Expression",
+      "left_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "const sum = function(a, b) {\n  return a + b;\n};\n\nconsole.log(sum(2, 3)); // 5"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Функция присваивается переменной",
+            "Нет поднятия (hoisting)",
+            "Ошибка при вызове до объявления"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Function Declaration - РАБОТАЕТ\nconsole.log(sayHello(\"Анна\"));\nfunction sayHello(name) {\n  return `Привет, ${name}`;\n}\n\n// Function Expression - ОШИБКА\nconsole.log(sayGoodbye(\"Анна\")); // Ошибка!\nconst sayGoodbye = function(name) {\n  return `Пока, ${name}`;\n};"
+        }
+      ]
+    },
+    {
+      "title": "Стрелочные функции",
+      "sub_title": "Arrow Functions",
+      "left_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Классическое выражение\nconst oldSum = function(a, b) {\n  return a + b;\n};\n\n// Стрелочная функция\nconst newSum = (a, b) => {\n  return a + b;\n};"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "list",
+          "items": [
+            "Более краткий синтаксис",
+            "Не имеют своего this",
+            "Не имеют arguments",
+            "Не могут быть конструкторами"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Сокращения стрелочных функций",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Неявный возврат (Implicit Return)"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Полная запись\nconst double = (n) => { \n  return n * 2; \n};\n\n// Сокращенная запись\nconst double = (n) => n * 2;"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "text",
+          "content": "Один параметр"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Со скобками\nconst double = (n) => n * 2;\n\n// Без скобок\nconst double = n => n * 2;\n\n// Без параметров\nconst sayHi = () => console.log('Hi!');"
+        }
+      ]
+    },
+    {
+      "title": "Отсутствие своего this",
+      "sub_title": "Важнейшая особенность",
+      "left_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "const person = {\n  name: 'Alice',\n  hobbies: ['coding', 'reading'],\n  showHobbies: function() {\n    this.hobbies.forEach(function(hobby) {\n      // this не ссылается на person!\n      console.log(this.name + ' loves ' + hobby);\n      // Ошибка: this.name - undefined\n    });\n  }\n};"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "const person = {\n  name: 'Alice',\n  hobbies: ['coding', 'reading'],\n  showHobbies: function() {\n    this.hobbies.forEach((hobby) => {\n      // this заимствован из showHobbies\n      console.log(this.name + ' loves ' + hobby);\n      // \"Alice loves coding\", \"Alice loves reading\"\n    });\n  }\n};"
+        }
+      ]
+    },
+    {
+      "title": "Отсутствие arguments",
+      "left_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Обычная функция\nconst regularFunc = function() {\n  console.log(arguments[0]); // 1\n  console.log(arguments[1]); // 2\n};\n\nregularFunc(1, 2, 3);"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Стрелочная функция\nconst arrowFunc = (...args) => {\n  console.log(args[0]); // 1\n  console.log(args[1]); // 2\n};\n\narrowFunc(1, 2, 3);\n\n// Используем rest-параметры\nconst sumAll = (...numbers) => {\n  return numbers.reduce((sum, num) => sum + num, 0);\n};\n\nconsole.log(sumAll(1, 2, 3, 4)); // 10"
+        }
+      ]
+    },
+    {
+      "title": "Область видимости функции",
+      "sub_title": "Function Scope",
+      "content": [
+        {
+          "type": "text",
+          "content": "Каждая функция имеет свою область видимости. Переменные, объявленные внутри функции, являются локальными и не видны снаружи."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function myFunction() {\n  const secret = \"My secret key\"; // Локальная переменная\n  console.log(secret); // Работает\n}\n\nmyFunction();\nconsole.log(secret); // Ошибка: secret is not defined"
+        }
+      ]
+    },
+    {
+      "title": "Замыкание",
+      "sub_title": "Closure",
+      "content": [
+        {
+          "type": "text",
+          "content": "Замыкание — это функция, которая запоминает свои внешние переменные и может к ним обращаться."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function createCounter() {\n  let count = 0; // Локальная переменная\n\n  // Внутренняя функция (замыкание)\n  return function() {\n    count++;      // Запоминает переменную count\n    return count;\n  };\n}\n\nconst myCounter = createCounter();\nconsole.log(myCounter()); // 1\nconsole.log(myCounter()); // 2\nconsole.log(myCounter()); // 3"
+        }
+      ]
+    },
+    {
+      "title": "Применение замыканий",
+      "sub_title": "Практическое использование",
+      "left_column": [
+        {
+          "type": "list",
+          "items": [
+            "Приватные переменные",
+            "Каррирование функций",
+            "Мемоизация",
+            "Обработка событий",
+            "Асинхронный код"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Каррирование\nconst add = (a) => (b) => a + b;\nconst add5 = add(5);\nconsole.log(add5(3)); // 8\n\n// Приватные переменные\nfunction createBankAccount() {\n  let balance = 0; // Приватная\n  \n  return {\n    deposit: (amount) => balance += amount,\n    withdraw: (amount) => balance -= amount,\n    getBalance: () => balance\n  };\n}"
+        }
+      ]
+    },
+    {
+      "title": "Пример: Счётчик с замыканием",
+      "content": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "function createCounter(initialValue = 0) {\n  let count = initialValue;\n  \n  return {\n    increment: function() {\n      count++;\n      return count;\n    },\n    decrement: function() {\n      count--;\n      return count;\n    },\n    getValue: function() {\n      return count;\n    },\nconst counter = createCounter(10);\nconsole.log(counter.increment()); // 11\nconsole.log(counter.increment()); // 12\nconsole.log(counter.decrement()); // 11\nconsole.log(counter.getValue());  // 11"
+        }
+      ]
+    },
+    {
+      "title": "Важность замыканий",
+      "content": [
+        {
+          "type": "list",
+          "items": [
+            "Обработка событий - колбэки имеют доступ к переменным при создании",
+            "Асинхронный код - setTimeout, Promises, AJAX",
+            "Модули - создание приватного состояния до ES6 модулей",
+            "Функциональное программирование - каррирование, композиция"
+          ]
+        },
+        {
+          "type": "text",
+          "content": "Понимание замыканий необходимо для эффективной работы с современным JavaScript."
+        }
+      ]
+    },
+    {
+      "title": "Callback-функции",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Callback - функция, передаваемая как аргумент и вызываемая внутри внешней функции."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Синхронный колбэк\nfunction calculate(a, b, operation) {\n  return operation(a, b);\n}\n\nconst add = (x, y) => x + y;\nconst multiply = (x, y) => x * y;\n\nconsole.log(calculate(5, 3, add));      // 8\nconsole.log(calculate(5, 3, multiply)); // 15"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Асинхронный колбэк\nsetTimeout(() => {\n  console.log(\"Сообщение через 2 секунды\");\n}, 2000);\n\n// Колбэк в обработчике события\ndocument.addEventListener('click', (event) => {\n  console.log('Клик по координатам:', \n    event.clientX, event.clientY);\n});"
+        }
+      ]
+    },
+    {
+      "title": "IIFE",
+      "sub_title": "Immediately Invoked Function Expression",
+      "content": [
+        {
+          "type": "text",
+          "content": "IIFE - функция, которая выполняется сразу после своего определения. Используется для изоляции области видимости."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "(function() {\n  const privateVar = \"Я недоступна извне\";\n  console.log(privateVar); // Сработает сразу\n})();\n\n// console.log(privateVar); // Ошибка!\n\n// IIFE с параметрами\n(function(name) {\n  console.log(`Привет, ${name}!`);\n})('Иван'); // \"Привет, Иван!\""
+        }
+      ]
+    },
+    {
+      "title": "Рекурсия",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Рекурсия - когда функция вызывает саму себя. Обязательно нужен базовый случай для остановки."
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Факториал\nfunction factorial(n) {\n  if (n === 1) { // Базовый случай\n    return 1;\n  } else { // Рекурсивный шаг\n    return n * factorial(n - 1);\n  }\n}\n\nconsole.log(factorial(5)); // 120"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Рекурсивный обход дерева\nfunction traverseTree(node) {\n  console.log(node.value);\n  \n  if (node.children) {\n    node.children.forEach(child => {\n      traverseTree(child); // Рекурсивный вызов\n    });\n  }\n}\n\nconst tree = {\n  value: 'A',\n  children: [\n    { value: 'B', children: [] },\n    { value: 'C', children: [\n      { value: 'D', children: [] }\n    ]}\n  ]\n};\n\ntraverseTree(tree); // A, B, C, D"
+        }
+      ]
+    },
+    {
+      "title": "Чистые функции",
+      "sub_title": "Pure Functions",
+      "left_column": [
+        {
+          "type": "list",
+          "items": [
+            "Для одинаковых аргументов всегда возвращает одинаковый результат",
+            "Не имеет побочных эффектов",
+            "Не изменяет внешние состояния",
+            "Не мутирует входные аргументы"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Чистая функция\nconst pureAdd = (a, b) => a + b;\n\n// НЕчистая функция (мутирует массив)\nconst impureAddToArray = (arr, item) => {\n  arr.push(item); // Побочный эффект!\n  return arr;\n};\n\n// Чистый аналог\nconst pureAddToArray = (arr, item) => \n  [...arr, item]; // Новый массив\n\nconst numbers = [1, 2, 3];\nconsole.log(pureAddToArray(numbers, 4)); // [1, 2, 3, 4]\nconsole.log(numbers); // [1, 2, 3] - не изменился"
+        }
+      ]
+    },
+    {
+      "title": "Заключение и обзор",
+      "content": [
+        {
+          "type": "list",
+          "items": [
+            "Function Declaration, Expression, Arrow Functions",
+            "Параметры, аргументы, return",
+            "Область видимости и замыкания",
+             "Callback-функции и IIFE",
+             "Рекурсия и чистые функции"
+          ]
+        },
+        {
+          "type": "text",
+          "content": "Глубокое понимание функций — основа для эффективной работы с современным JavaScript, асинхронным программированием и фреймворками."
+        }
+      ]
+    }
+  ]
+}

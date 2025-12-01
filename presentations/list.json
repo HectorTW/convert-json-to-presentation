@@ -1,0 +1,44 @@
+{
+  "presentations": [
+    {
+      "file": "lecture_1.json",
+      "title": "Лекция №1. Языки программирования"
+    },
+    {
+      "file": "lecture_2.json",
+      "title": "Лекция №2. Структурное программирование = Без хаоса!"
+    },
+    {
+      "file": "lecture_3.json",
+      "title": "Лекция №3. Введение в JavaScript"
+    },
+    {
+      "file": "lecture_4.json",
+      "title": "Лекция №4. Выражения"
+    },
+    {
+      "file": "shpora_1.json",
+      "title": "Шпаргалка по JS №1"
+    },
+    {
+      "file": "lecture_5.json",
+      "title": "Лекция №5. Все о переменных в JavaScript"
+    },
+    {
+      "file": "lecture_6.json",
+      "title": "Лекция №6. Функции в JavaScript"
+    },
+    {
+      "file": "lecture_7.json",
+      "title": "Лекция №7. Примитивные типы данных в JavaScript"
+    },
+    {
+      "file": "lecture_8.json",
+      "title": "Лекция №8. Структурное программирование в JavaScript"
+    },
+    {
+      "file": "kedr.json",
+      "title": "КЕДР"
+    }
+  ]
+}

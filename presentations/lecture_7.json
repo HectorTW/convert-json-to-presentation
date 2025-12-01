@@ -1,0 +1,308 @@
+{
+  "slides": [
+    {
+      "title": "Примитивные типы данных в JavaScript",
+      "sub_title": "Лекция №7",
+      "content": [
+        {
+          "type": "text",
+          "content": "Фундаментальная тема программирования - типы данных. Данные - это кровь любой программы, а их тип определяет возможные операции."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Числа, текст, логические значения - всё это данные",
+            "Тип данных определяет допустимые операции",
+            "Основа надежного кода и избежания ошибок"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Две категории типов данных",
+      "sub_title": "Примитивы vs Объекты",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "ПРИМИТИВНЫЕ ТИПЫ"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Простые, элементарные значения",
+            "Неизменяемые (immutable)",
+            "Сравнение по значению",
+            "Пример: 5 === 5 → true"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "text",
+          "content": "ОБЪЕКТЫ (Не-примитивы)"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Сложные составные структуры",
+            "Могут содержать свойства и методы",
+            "Сравнение по ссылке",
+            "Пример: {} === {} → false"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Что такое примитивный тип?",
+      "sub_title": "Ключевые характеристики",
+      "content": [
+        {
+          "type": "text",
+          "content": "Главная характеристика - НЕИЗМЕНЯЕМОСТЬ (Immutability)"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "let str = 'Hello';\nstr[0] = 'h'; // Не сработает!\nconsole.log(str); // 'Hello'\n\n// Создается новая строка\nstr = str + ' world'; // 'Hello world'"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Хранение в СТЕКЕ - быстро и эффективно",
+            "Autoboxing - временная обертка для вызова методов",
+            "Пример: 'hello'.toUpperCase()"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Тип Number",
+      "sub_title": "Числовые значения",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Представляет целые числа и числа с плавающей точкой"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Целые числа: 25, -10",
+            "Дробные числа: 99.95, 3.14",
+            "Infinity и -Infinity",
+            "NaN (Not-a-Number)"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "let age = 25; // целое число\nlet price = 99.95; // с плавающей точкой\nlet result = 10 / 0; // Infinity\nlet notNumber = 'строка' / 5; // NaN\n\nconsole.log(typeof age); // \"number\"\nconsole.log(NaN === NaN); // false"
+        }
+      ]
+    },
+    {
+      "title": "Тип String",
+      "sub_title": "Строковые значения",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Последовательность символов в кавычках"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Одинарные: 'текст'",
+            "Двойные: \"текст\"",
+            "Шаблонные: `текст`",
+            "Интерполяция: ${variable}"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "let name = 'Alice';\nlet message = \"Это сообщение\";\nlet greeting = `Hello, ${name}!`;\n\nconsole.log(greeting); // \"Hello, Alice!\"\nconsole.log(typeof message); // \"string\""
+        }
+      ]
+    },
+    {
+      "title": "Тип Boolean",
+      "sub_title": "Логические значения",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "Всего два значения: true и false"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Основной тип для логики программы",
+            "Используется в условиях и циклах",
+            "Результат сравнений"
+          ]
+        }
+      ],
+      "right_column": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "let isLoaded = true;\nlet isGreater = 10 > 5; // true\nlet isEmpty = '' === false; // false\n\nif (isLoaded) {\n  console.log('Загрузка завершена');\n}"
+        }
+      ]
+    },
+    {
+      "title": "Boolean: задачи на преобразование",
+      "sub_title": "Проверка понимания",
+      "content": [
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "// Что вернут эти выражения?\n!!\"0\"           // true\n!!\"false\"       // true\n!![]            // true\n!!{}            // true\n\n!\"\"             // true\n!0              // true\n!null           // true\n!undefined      // true\n\n\"1\" == 1        // true\n\"0\" == 0        // true\nnull == undefined // true\nNaN != NaN      // true"
+        }
+      ]
+    },
+    {
+      "title": "Undefined и Null",
+      "sub_title": "Специальные значения",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "UNDEFINED"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Значение по умолчанию",
+            "Неинициализированные переменные",
+            "Несуществующие свойства",
+            "Отсутствующие параметры"
+          ]
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "let x;\nconsole.log(x); // undefined"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "text",
+          "content": "NULL"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Намеренное отсутствие значения",
+            "Явно присваивается программистом",
+            "typeof null → 'object' (ошибка)"
+          ]
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "let user = null;\nconsole.log(typeof null); // 'object'"
+        }
+      ]
+    },
+    {
+      "title": "Symbol и BigInt",
+      "sub_title": "Современные примитивы",
+      "left_column": [
+        {
+          "type": "text",
+          "content": "SYMBOL (ES2015)"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Уникальный идентификатор",
+            "Неизменяемый",
+            "Для уникальных ключей объектов"
+          ]
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "let id = Symbol('id');\nlet user = {};\nuser[id] = 123; // Уникальный ключ"
+        }
+      ],
+      "right_column": [
+        {
+          "type": "text",
+          "content": "BIGINT (ES2020)"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Целые числа произвольной длины",
+            "Суффикс n",
+            "Для больших чисел"
+          ]
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "let big = 123456789012345678901234567890n;\nconsole.log(big + 1n); // 123456789012345678901234567891n"
+        }
+      ]
+    },
+    {
+      "title": "Динамическая типизация",
+      "sub_title": "Гибкость и вызовы",
+      "content": [
+        {
+          "type": "text",
+          "content": "Тип переменной определяется во время выполнения и может изменяться"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "let value = 'Hello';  // string\nconsole.log(typeof value); // \"string\"\n\nvalue = 42;           // number\nconsole.log(typeof value); // \"number\"\n\nvalue = true;         // boolean\nconsole.log(typeof value); // \"boolean\""
+        },
+        {
+          "type": "list",
+          "items": [
+            "Плюсы: гибкость, скорость разработки",
+            "Минусы: возможные ошибки времени выполнения"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Оператор typeof",
+      "sub_title": "Определение типа данных",
+      "content": [
+        {
+          "type": "text",
+          "content": "Главный инструмент для проверки типов во время выполнения"
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "typeof 'Hello'        // \"string\"\ntypeof 42             // \"number\"\ntypeof true           // \"boolean\"\ntypeof undefined      // \"undefined\"\ntypeof null           // \"object\" (ошибка!)\ntypeof Symbol()       // \"symbol\"\ntypeof 10n            // \"bigint\"\ntypeof {}             // \"object\"\ntypeof []             // \"object\"\ntypeof function(){}   // \"function\""
+        }
+      ]
+    },
+    {
+      "title": "Итоги",
+      "sub_title": "Ключевые моменты",
+      "content": [
+        {
+          "type": "list",
+          "items": [
+            "Две категории: Примитивы (по значению) и Объекты (по ссылке)",
+            "7 примитивных типов: number, string, boolean, undefined, null, symbol, bigint",
+            "JavaScript - динамически типизированный язык",
+            "Используйте typeof для проверки типов"
+          ]
+        },
+        {
+          "type": "text",
+          "content": "Понимание типов - основа для написания предсказуемого кода и избежания ошибок!"
+        }
+      ]
+    }
+  ]
+}

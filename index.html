@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Презентации</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Правая боковая панель навигации -->
+    <div class="sidebar">
+        <button class="home-btn" id="homeBtn">|||</button>
+        <div class="slide-indicators" id="slideIndicators"></div>
+        <div class="slide-counter" id="slideCounter"></div>
+        <div class="navigation">
+            <button class="nav-btn nav-btn-small" id="prevBtn">←</button>
+            <button class="nav-btn nav-btn-large" id="nextBtn">→</button>
+        </div>
+    </div>
+
+    <!-- Home страница -->
+    <div id="homePage" class="home-container">
+        <h1 class="home-title">Выберите презентацию</h1>
+        <div class="presentations-grid" id="presentationsGrid"></div>
+    </div>
+
+    <!-- Презентация -->
+    <div id="presentationPage" class="presentation-container hidden">
+        <div id="slidesContainer"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
