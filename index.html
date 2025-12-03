@@ -11,6 +11,38 @@
     <!-- Правая боковая панель навигации -->
     <div class="sidebar">
         <button class="home-btn" id="homeBtn">|||</button>
+        
+        <!-- Инструменты рисования -->
+        <div class="drawing-tools" id="drawingTools">
+            <!-- Цвета -->
+            <div class="draw-tool-group">
+                <button class="draw-color-btn" data-color="red" id="drawColorRed" title="Красный"></button>
+                <button class="draw-color-btn" data-color="green" id="drawColorGreen" title="Зелёный"></button>
+                <button class="draw-color-btn" data-color="blue" id="drawColorBlue" title="Голубой"></button>
+                <button class="draw-color-btn" data-color="yellow" id="drawColorYellow" title="Жёлтый"></button>
+            </div>
+            
+            <!-- Толщина -->
+            <div class="draw-tool-group">
+                <button class="draw-width-btn" data-size="small" id="drawWidthSmall" title="Тонкая">─</button>
+                <button class="draw-width-btn" data-size="medium" id="drawWidthMedium" title="Средняя">━</button>
+                <button class="draw-width-btn" data-size="large" id="drawWidthLarge" title="Толстая">═</button>
+            </div>
+            
+            <!-- Режимы -->
+            <div class="draw-tool-group">
+                <button class="draw-mode-btn" id="drawHighlightBtn" title="Выделение">▬</button>
+                <button class="draw-mode-btn" id="drawLineBtn" title="Линии">┃</button>
+                <button class="draw-mode-btn" id="drawEraserBtn" title="Ластик">⊘</button>
+                <button class="draw-mode-btn" id="drawPenBtn" title="Перо">✎</button>
+            </div>
+            
+            <!-- Очистка -->
+            <div class="draw-tool-group">
+                <button class="draw-clear-btn" id="drawClearBtn" title="Очистить всё">✕</button>
+            </div>
+        </div>
+        
         <div class="slide-indicators" id="slideIndicators"></div>
         <div class="slide-counter" id="slideCounter"></div>
         <div class="navigation">

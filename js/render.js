@@ -1,6 +1,7 @@
 import { state } from './state.js';
 import { loadPresentation } from './presentation.js';
 import { goToSlide, updateNavigationButtons } from './navigation.js';
+import { initAllCanvases } from './drawing.js';
 
 export function renderHomePage() {
     const grid = document.getElementById('presentationsGrid');
@@ -28,6 +29,12 @@ export function renderHomePage() {
     document.getElementById('presentationPage').classList.add('hidden');
     document.getElementById('slideIndicators').innerHTML = '';
     document.getElementById('slideCounter').textContent = '';
+    
+    // Скрываем инструменты рисования на домашней странице
+    const drawingTools = document.getElementById('drawingTools');
+    if (drawingTools) {
+        drawingTools.style.display = 'none';
+    }
 }
 
 export function renderPresentation() {
@@ -111,6 +118,17 @@ export function renderPresentation() {
 
     // Обновление кнопок навигации
     updateNavigationButtons();
+    
+    // Показываем инструменты рисования
+    const drawingTools = document.getElementById('drawingTools');
+    if (drawingTools) {
+        drawingTools.style.display = 'flex';
+    }
+    
+    // Инициализация canvas для рисования
+    setTimeout(() => {
+        initAllCanvases();
+    }, 0);
 }
 
 function createContentItem(item) {
